@@ -46,9 +46,15 @@ Route::get('/', function () {
     // ]);
     // return 'updated';
 
+    // $post = Post::find(1);
+    // $post->title = "saved title";
+    // $post->content = "saved content";
+    // $post->save();
+    // return 'saved';
+
     $post = Post::find(1);
-    $post->title = "saved title";
-    $post->content = "saved content";
-    $post->save();
-    return 'saved';
+    $post->delete();
+    Post::destroy(2);
+    Post::destroy(3, 5, 7);
+    return 'deleted';
 });
