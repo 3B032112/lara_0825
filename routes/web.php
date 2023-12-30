@@ -26,13 +26,15 @@ Route::get('/', function () {
     // echo '內容: '.$post->content.'<br>';
     // dd($post);
 
-    $posts = Post::all();
-    foreach ($posts as $post) {
-        echo '編號: ' . $post->id . '<br>';
-        echo '標題: ' . $post->title . '<br>';
-        echo '內容: ' . $post->content . '<br>';
-        echo '張貼時間: ' . $post->created_at . '<br>';
-    }
+    // $posts = Post::all();
+    // foreach ($posts as $post) {
+    //     echo '編號: ' . $post->id . '<br>';
+    //     echo '標題: ' . $post->title . '<br>';
+    //     echo '內容: ' . $post->content . '<br>';
+    //     echo '張貼時間: ' . $post->created_at . '<br>';
+    // }
+    // dd($post);
+    // return 'Saved, OK!';
+    $post = Post::where('id', '<', 10)->orderby('id', 'desc')->get();
     dd($post);
-    return 'Saved, OK!';
 });
