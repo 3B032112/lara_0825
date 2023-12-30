@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,13 +59,24 @@ Route::get('/', function () {
     // Post::destroy(3, 5, 7);
     // return 'deleted';
 
-    $allPosts = Post::all();
-    dd($allPosts);
-    $featurePosts = Post::where('is_feature', true)->get();
-    dd($featurePosts);
-    $fourthPost = Post::find(4);
-    dd($fourthPost);
-    $lastPost = Post::orderBy('id', 'DESC')->first();
-    dd($lastPost);
-    return 'done';
+    // $allPosts = Post::all();
+    // dd($allPosts);
+    // $featurePosts = Post::where('is_feature', true)->get();
+    // dd($featurePosts);
+    // $fourthPost = Post::find(4);
+    // dd($fourthPost);
+    // $lastPost = Post::orderBy('id', 'DESC')->first();
+    // dd($lastPost);
+    // return 'done';
+
+    $post = Post::all();
+    echo $post->title . '<br>';
+    echo $post->content . '<br>';
+    echo '---------------------------' . '<br>';
+    $comments = $post->comments()->get();
+    foreach ($comments as $comment) {
+
+        echo '留言內容:' . $comment->content . '<br>';
+        echo '---------------------------' . '<br>';
+    }
 });
