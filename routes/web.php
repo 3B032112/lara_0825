@@ -69,14 +69,23 @@ Route::get('/', function () {
     // dd($lastPost);
     // return 'done';
 
-    $post = Post::all();
+    // $post = Post::all();
+    // echo $post->title . '<br>';
+    // echo $post->content . '<br>';
+    // echo '---------------------------' . '<br>';
+    // $comments = $post->comments()->get();
+    // foreach ($comments as $comment) {
+
+    //     echo '留言內容:' . $comment->content . '<br>';
+    //     echo '---------------------------' . '<br>';
+    // }
+
+
+    $comment = Comment::find(5);
+    echo $comment->content . '<br>';
+    echo '*****************' . '<br>';
+    $post = $comment->post()->first();
+    echo $post->id . '<br>';
     echo $post->title . '<br>';
     echo $post->content . '<br>';
-    echo '---------------------------' . '<br>';
-    $comments = $post->comments()->get();
-    foreach ($comments as $comment) {
-
-        echo '留言內容:' . $comment->content . '<br>';
-        echo '---------------------------' . '<br>';
-    }
 });
